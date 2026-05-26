@@ -23,7 +23,7 @@ function App() {
     const wpisanaOdpowiedz = odpowiedz.trim().toLowerCase();
     const poprawnaOdpowiedz = odp.trim().toLowerCase();
 
-    if (wpisanaOdpowiedz === poprawnaOdpowiedz) {
+    if (wpisanaOdpowiedz === poprawnaOdpowiedz && Hp > 0) {
       setCzyPoprawne(true);
       setPunkty((p) => p + 1);
       losuj();
