@@ -18,10 +18,16 @@ function App() {
     setPytanie(obecnePytanie.pytanie);
     setOdpowiedz('');
   };
+  const wygrana = () => {
+    setPytanie("wygrana oto kod na prezent : `you win` ")
+  }
 
   const sprawdzOdpowiedz = () => {
     const wpisanaOdpowiedz = odpowiedz.trim().toLowerCase();
     const poprawnaOdpowiedz = odp.trim().toLowerCase();
+    if(punkty > 10){
+      wygrana()
+    }
 
     if (wpisanaOdpowiedz === poprawnaOdpowiedz && Hp > 0) {
       setCzyPoprawne(true);
