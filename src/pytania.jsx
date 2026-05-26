@@ -59,6 +59,8 @@ const pytania = [
 },
 {
     
-    pytanie: '',
-    odp: 'Informatyka',
+    pytanie: 'gdzie jeremi chce pojechać ',
+    odp: 'Na narty',
 }]
+
+export default pytania;
