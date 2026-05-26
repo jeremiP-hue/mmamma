@@ -1,6 +1,7 @@
 const pytania = [
   {
-    pytanie:'Gdzie uważasz, że twoi synowie chcieliby z tobą pójść? A) do zoo B) do Empiku C) Pixel XL D) do muzeum',
+    pytanie:
+      'Gdzie uważasz, że twoi synowie chcieliby z tobą pójść? A) do zoo B) do Empiku C) Pixel XL D) do muzeum',
     odp: 'Pixel XL',
   },
   {
@@ -12,7 +13,7 @@ const pytania = [
     odp: 'Harry Potter',
   },
   {
-    pytanie: 'W jaką grę planszową najbardziej lubi grać Jeremi? Podaj skrót.',
+    pytanie: 'W jaką grę planszową najbardziej lubi grać Jeremi?',
     odp: 'Władca Pierścieni',
   },
   {
@@ -20,47 +21,41 @@ const pytania = [
     odp: 'Avatar',
   },
   {
-    pytanie: 'Jaki jes ulubiony przedmiot jeremiego :P',
+    pytanie: 'Jaki jest ulubiony przedmiot Jeremiego?',
     odp: 'Informatyka',
   },
   {
-    
-    pytanie: 'jakie jest ulubione jedzenie cyryla',
-    odp: 'sushi',
+    pytanie: 'Jakie jest ulubione jedzenie Cyryla?',
+    odp: 'Sushi',
   },
   {
-    pytanie: 'jaki jest ulubiony przedmiot cyryla',
-    odp: 'matematyka',
+    pytanie: 'Jaki jest ulubiony przedmiot Cyryla?',
+    odp: 'Matematyka',
   },
   {
-    
-    pytanie: 'jaki jest ulubiony kolor jeremiego',
-    odp: 'zielony',
+    pytanie: 'Jaki jest ulubiony kolor Jeremiego?',
+    odp: 'Zielony',
   },
-{
-    
-    pytanie: 'jaki jest ulubiony smak lodów cyryla',
-    odp: 'śmietankowy',
-},
-{
-    
-    pytanie: 'jaką markę samochodów jeremi lubi najbardziej ',
-    odp: 'ferari',
-},
-{
-    
-    pytanie: 'jaki procesor ma jeremi w Pc',
+  {
+    pytanie: 'Jaki jest ulubiony smak lodów Cyryla?',
+    odp: 'Śmietankowy',
+  },
+  {
+    pytanie: 'Jaką markę samochodów Jeremi lubi najbardziej?',
+    odp: 'Ferrari',
+  },
+  {
+    pytanie: 'Jaki procesor ma Jeremi w PC?',
     odp: 'AMD 7 7700',
-},
-{
-    
-    pytanie: 'jakie jest ulubione jedzenie jeremiego',
+  },
+  {
+    pytanie: 'Jakie jest ulubione jedzenie Jeremiego?',
     odp: 'Pizza',
-},
-{
-    
-    pytanie: 'gdzie jeremi chce pojechać ',
+  },
+  {
+    pytanie: 'Gdzie Jeremi chce pojechać?',
     odp: 'Na narty',
-}]
+  },
+];
 
 export default pytania;

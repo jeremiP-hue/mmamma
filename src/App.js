@@ -27,6 +27,7 @@ function App() {
     const poprawnaOdpowiedz = odp.trim().toLowerCase();
     if(punkty > 10){
       wygrana()
+      return 0 
     }
 
     if (wpisanaOdpowiedz === poprawnaOdpowiedz && Hp > 0) {
