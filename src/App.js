@@ -7,7 +7,7 @@ function App() {
   const [pytanie, setPytanie] = useState('');
   const [odpowiedz, setOdpowiedz] = useState('');
   const [czyPoprawne, setCzyPoprawne] = useState(null);
-  const [Hp, setHP] = useState(3)
+  const [Hp, setHP] = useState(3);
   const [punkty, setPunkty] = useState(0);
 
   const losuj = () => {
@@ -28,16 +28,33 @@ function App() {
       setPunkty((p) => p + 1);
       losuj();
     } else {
+
       setCzyPoprawne(false);
-      setHP(h => h-1)
+      setHP((h) => {
+        const noweHp = h - 1;
+
+        if (noweHp <= 0) {
+          localStorage.clear();
+          setPytanie("przegrana");
+          return 0;
+        }
+
+        return noweHp;
+      });
     }
   };
   const zapisz = () => {
-    localStorage.setItem("iloscpunktow", punkty )
+    localStorage.setItem("iloscpunktow", punkty);
+    localStorage.setItem("iloscHP", Hp)
    }
    const zaladuj = () => {
-    setPunkty(p => localStorage.getItem("iloscpunktow"))
+    const zapisanePunkty = localStorage.getItem("iloscpunktow");
+    setPunkty(zapisanePunkty === null ? 0 : Number(zapisanePunkty));
+
+    const zapisanHp = localStorage.getItem("iloscHp");
+    setPunkty(zapisanHp === null ? 0 : Number(zapisanePunkty));
    }
+   
 
   useEffect(() => {
     losuj();
