@@ -11,6 +11,13 @@ color: yellow;}
   height: 40vmin;
   pointer-events: none;
 }
+.odp{
+  border-radius: 20px;
+  height: 4vh;
+  width: 10vw;
+  border-color: green;
+  background-color: rgb(3, 83, 3);
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

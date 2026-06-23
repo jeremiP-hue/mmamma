@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import pytania from './pytania';
+import wyzwania from './wyzwania';
 
 function App() {
   const [odp, setOdp] = useState('');
@@ -9,6 +10,7 @@ function App() {
   const [czyPoprawne, setCzyPoprawne] = useState(null);
   const [Hp, setHP] = useState(3);
   const [punkty, setPunkty] = useState(0);
+  const [nagroda, setNagroda] = useState(true)
 
   const losuj = () => {
     const nrPytania = Math.floor(Math.random() * pytania.length);
@@ -19,20 +21,25 @@ function App() {
     setOdpowiedz('');
   };
   const wygrana = () => {
-    setPytanie("wygrana oto kod na prezent : `you win` ")
+    setPytanie("wygrana oto kod na prezent : `we sol` ")
   }
 
   const sprawdzOdpowiedz = () => {
     const wpisanaOdpowiedz = odpowiedz.trim().toLowerCase();
     const poprawnaOdpowiedz = odp.trim().toLowerCase();
-    if(punkty > 10){
-      wygrana()
-      return 0 
-    }
 
     if (wpisanaOdpowiedz === poprawnaOdpowiedz && Hp > 0) {
+      const nowePunkty = punkty + 1;
+
       setCzyPoprawne(true);
-      setPunkty((p) => p + 1);
+      setPunkty(nowePunkty);
+
+      if (nowePunkty > 20) {
+        wygrana();
+        setOdpowiedz('');
+        return;
+      }
+
       losuj();
     } else {
 
@@ -50,22 +57,82 @@ function App() {
       });
     }
   };
+
+
+
+
+
+
+
+
+
+
+  const sprawdzWyzwanie = () => {
+    const wpisanaOdpowiedz = odpowiedz.trim().toLowerCase();
+    const poprawnaOdpowiedz = odp.trim().toLowerCase();
+
+    if (wpisanaOdpowiedz === poprawnaOdpowiedz && Hp > 0) {
+      const nowePunkty = punkty + 5;
+
+      setCzyPoprawne(true);
+      setPunkty(nowePunkty);
+
+      if (nowePunkty > 20) {
+        wygrana();
+        setOdpowiedz('');
+        return;
+      }
+
+      losuj();
+    } else {
+
+      setCzyPoprawne(false);
+      setHP((h) => {
+        const noweHp = h - 3;
+
+        if (noweHp <= 0) {
+          localStorage.clear();
+          setPytanie("przegrana");
+          return 0;
+        }
+        setNagroda(true)
+        return noweHp;
+      });
+    }
+  };
+
   const zapisz = () => {
     localStorage.setItem("iloscpunktow", punkty);
     localStorage.setItem("iloscHP", Hp)
-   }
-   const zaladuj = () => {
+  }
+  const zaladuj = () => {
     const zapisanePunkty = localStorage.getItem("iloscpunktow");
     setPunkty(zapisanePunkty === null ? 0 : Number(zapisanePunkty));
 
     const zapisanHp = localStorage.getItem("iloscHp");
     setPunkty(zapisanHp === null ? 0 : Number(zapisanePunkty));
-   }
-   
+  }
+  const pytanienag = () => {
+    sprawdzOdpowiedz()
+  }
+  const sprawdz = () => {
+        nagroda ? pytanienag() : sprawdzWyzwanie();
+  }
+
 
   useEffect(() => {
+
     losuj();
   }, []);
+  const wyzwanie = () => {
+    setNagroda(false)
+    const nrWyzwania = Math.floor(Math.random() * wyzwania.length);
+    const obecneZadanei = wyzwania[nrWyzwania];
+
+    setOdp(obecneZadanei.chaslo);
+    setPytanie(obecneZadanei.zadanie);
+    setOdpowiedz('');
+  }
 
   const serca = [];
   for (let i = 0; i < Hp; i++) {
@@ -75,18 +142,19 @@ function App() {
   return (
     <div className="App">
       {serca}
-      <h1 className="tytl">QUIZ NA DZIEŃ MAMY</h1>
+      <h1 className="tytl">QUIZ NA DZIEŃ TATY</h1>
       <h2>{pytanie}</h2>
       <h3>Punkty: {punkty}</h3>
       <input
         value={odpowiedz}
         onChange={(e) => setOdpowiedz(e.target.value)}
       />
-      <button onClick={sprawdzOdpowiedz}>odpowiedz</button>
+      <button onClick={sprawdz} className='odp'>odpowiedz</button>
       <button onClick={zapisz}>zapisz</button>
       <button onClick={zaladuj}>zaladuj</button>
+      <button onClick={wyzwanie}>wyzwanie</button>
 
-      
+
       {czyPoprawne === true && <p>Dobrze!</p>}
       {czyPoprawne === false && <p>Spróbuj jeszcze raz.</p>}
     </div>
