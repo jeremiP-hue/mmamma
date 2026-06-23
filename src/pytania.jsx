@@ -142,7 +142,7 @@ odp: 'Bawić się z kolegami',
 },
 {
 pytanie: 'Jaki jest ulubiony bohater Jeremiego z Harry’ego Pottera?',
-odp: 'Ron Weasley',
+odp: 'Draco mafloy',
 },
 {
 pytanie: 'Jaki jest ulubiony bohater Cyryla z Harry’ego Pottera?',
